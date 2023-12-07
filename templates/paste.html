@@ -1,13 +1,24 @@
 {% extends "base.html" %}
-
-{% block body %}
   
-  <form>
 
-    <textarea rows="10" cols="100">
-      Insert paste here...
-    </textarea>
+  {% block nav %}
+      <ul>
+        <li>Home</li>
+        <li>About us</li>
+        <li>Something else</li>
+        <li> Paste </li>
+      </ul>
+  {% endblock %} 
+  
 
-  </form>
+  {% block content %}
+  
+      <form>
 
-{% endblock %}
+        <textarea rows="10" cols="100">
+          Insert paste here...
+        </textarea>
+
+      </form>
+
+  {% endblock %}
