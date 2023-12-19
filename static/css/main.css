@@ -1,0 +1,103 @@
+*{
+  color: black;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  font-family: Verdana;
+}
+
+body{
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2rem;
+  background: url("./../assets/wallpaperflare.com_wallpaper.jpg");
+  background-repeat: no-repeat;
+  position: fixed;
+}
+
+nav {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5rem;
+}
+
+.logo{
+  width: 50px;
+  margin: 2rem
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.primary-header {
+  align-items: center;
+  border-bottom: 1px solid white;
+  justify-content: space-between;
+}
+
+@media (max-width: 35em) {
+  .primary-nav{
+    position: fixed;
+  }
+}
+
+.primary-nav {
+  --gap: 5rem;
+  list-style: none;
+  padding: 0rem;
+  margin: 0rem;
+  width: 30vw;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top:0;
+  right: 0;
+  height: 100%;
+}
+
+@supports(backdrop-filter: blur(1rem)){
+  .primary-header{
+    background: hsl(351.43 4.05% 33.92%/0.75);
+    backdrop-filter: blur(0.5rem);
+  }
+}
+
+
+.primary-header a{
+  text-decoration:none;
+  color: white;
+}
+
+.mobile-nav-toggle {
+  background-color: grey;
+  display: none;
+}
+
+.paste{
+  grid-column-start:2;
+}
+
+.textarea{
+  background-color: transparent;
+  max-height: 500px;
+  background: hsl(0 0% 100%/0.75);
+}
+
+.submit{
+  border: 0;
+  position: relative;
+  display: block;
+  z-index: 3;
+  width: 3rem;
+  aspect-ratio: 2;
+  align-self: flex-end;
+}

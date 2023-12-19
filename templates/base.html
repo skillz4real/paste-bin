@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <title> {% block title %} {% endblock %} </title>
     <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+    <script src="{{url_for('static', filename='assets/nav.js')}}" defer></script>
   </head>
   <body>
-    <nav>
     {% block nav %} {% endblock %}
-    </nav>
-    <h1>Hello {{name}}</h1>
-  <!-- can add jinja syntaxe for control flow and add if user logged in then display account info else display login buttons -->
+    <!-- can add jinja syntaxe for control flow and add if user logged in then display account info else display login buttons -->
     {% block content %} {% endblock %}
   </body>
 </html>
