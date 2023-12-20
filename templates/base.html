@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title> {% block title %} {% endblock %} </title>
     <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
-    <script src="{{url_for('static', filename='assets/nav.js')}}" defer></script>
+    <script src="{{url_for('static', filename='js/nav.js')}}" defer></script>
+    <script src="{{url_for('static', filename='js/index.js')}}" defer></script>
   </head>
   <body>
     {% block nav %} {% endblock %}

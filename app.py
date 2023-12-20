@@ -7,9 +7,11 @@ con = sqlite3.connect('paste.db')
 
 cursor = con.cursor()
 
-cursor.execute("CREATE TABLE IF NOT EXISTS paste(data TEXT,date DATE,id INTEGER)")
+cursor.execute("CREATE TABLE IF NOT EXISTS paste(data TEXT,date DATE,id INTEGER);")
 
 con.commit()
+
+con.close()
 
 app = Flask(__name__)
 
@@ -21,18 +23,19 @@ def index():
 @app.route("/paste", methods=['POST','GET'])
 def paste():
     if request.method == 'POST':
+        con = sqlite3.connect('paste.db')
+        cursor = con.cursor()
         value = request.form['paste']
+        print(value)
         date = str(datetime.now())
-        b_value = bytearray(value)
-        pid = hashlib.new("md5",value)
-        print(pid)
-        cursor.execute(f"""
-                       INSERT INTO paste VALUES
-                       ({value})
-                       """)
+        res = cursor.execute(f"SELECT id FROM paste;")
+        ids = res.fetchall()
+        print(ids)
+        cursor.execute(f"INSERT INTO paste VALUES (?);",value)
         #SELECT col1,col2... FROM db ORDER BY col1
         #SELECT col1 FROM db WHERE id='id_2'
         cursor.commit()
+        con.close()
 
     if request.method == 'GET':
         res = cursor.execute("SELECT data FROM paste")
@@ -56,5 +59,5 @@ def retreive_paste(paste_id):
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
 

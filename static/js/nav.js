@@ -1,2 +1,2 @@
 const primaryNav = document.querySelector(".primary-nav")
-const navToggle = document.querySelector("")
+//const navToggle = document.querySelector("")
