@@ -7,7 +7,7 @@ con = sqlite3.connect('paste.db')
 
 cursor = con.cursor()
 
-cursor.execute("CREATE TABLE IF NOT EXISTS paste(data TEXT,date DATE,id INTEGER);")
+cursor.execute("CREATE TABLE IF NOT EXISTS paste(data TEXT,date DATE,idx INTEGER);")
 
 con.commit()
 
@@ -23,18 +23,22 @@ def index():
 @app.route("/paste", methods=['POST','GET'])
 def paste():
     if request.method == 'POST':
+        idx = 0 
         con = sqlite3.connect('paste.db')
         cursor = con.cursor()
         value = request.form['paste']
         print(value)
         date = str(datetime.now())
-        res = cursor.execute(f"SELECT id FROM paste;")
-        ids = res.fetchall()
-        print(ids)
-        cursor.execute(f"INSERT INTO paste VALUES (?);",value)
+        res = cursor.execute(f"SELECT idx FROM paste;")
+        try:
+            idx = max(res.fetchall()) + 1
+        except:
+            idx = 0
+        print(idx)
+        cursor.execute(f"INSERT INTO paste VALUES (?, ?, ?);",(value,date,idx))
         #SELECT col1,col2... FROM db ORDER BY col1
-        #SELECT col1 FROM db WHERE id='id_2'
-        cursor.commit()
+        #SELECT col1 FROM db WHERE idx='idx_2'
+        con.commit()
         con.close()
 
     if request.method == 'GET':
@@ -53,8 +57,8 @@ var types can be:
     - uuid
 '''
 
-@app.route('/paste/<int:paste_id>')
-def retreive_paste(paste_id):
+@app.route('/paste/<int:paste_idx>')
+def retreive_paste(paste_idx):
     pass
 
 
