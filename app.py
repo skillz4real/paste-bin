@@ -15,6 +15,16 @@ con.close()
 
 app = Flask(__name__)
 
+def tuple_to_dict(d,t):
+    idx,title,data = t
+    if title:
+        d.setdefault(title, data)
+    else:
+        d.setdefault(idx,data)
+    return d
+
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -41,11 +51,17 @@ def paste():
         con.commit()
         con.close()
 
-    if request.method == 'GET':
-        res = cursor.execute("SELECT data FROM paste")
-        test = res.fetchall()
-    return render_template("index.html")
-
+    
+    con = sqlite3.connect('paste.db')
+    cursor = con.cursor()
+    res = cursor.execute("SELECT idx, title, data FROM paste")
+    values = res.fetchall()
+    dic = {}
+    for value in values:
+        tuple_to_dict(dic,value)
+    con.close()
+    return render_template("paste.html", pastes=dic)
+    
 '''
 flask routing takes the following format
 /route/<var_type:var_name>
