@@ -3,11 +3,11 @@ import sqlite3
 from datetime import datetime
 import hashlib
 
-con = sqlite3.connect('paste.db')
+con = sqlite3.connect("paste.db")
 
 cursor = con.cursor()
 
-cursor.execute("CREATE TABLE IF NOT EXISTS paste(data TEXT,date DATE,idx INTEGER);")
+cursor.execute("CREATE TABLE IF NOT EXISTS paste(idx INTEGER PRIMARY KEY, title TEXT, date DATE, data TEXT);")
 
 con.commit()
 
@@ -27,15 +27,15 @@ def paste():
         con = sqlite3.connect('paste.db')
         cursor = con.cursor()
         value = request.form['paste']
-        print(value)
-        date = str(datetime.now())
+        title = request.form["paste-title"]
+        date = str(datetime.now()).split(".")[0]
         res = cursor.execute(f"SELECT idx FROM paste;")
         try:
-            idx = max(res.fetchall()) + 1
+            idx, = res.fetchall()[-1]
+            idx += 1
         except:
-            idx = 0
-        print(idx)
-        cursor.execute(f"INSERT INTO paste VALUES (?, ?, ?);",(value,date,idx))
+            pass
+        cursor.execute(f"INSERT INTO paste VALUES (?, ?, ?,?);",(idx, title, date, value))
         #SELECT col1,col2... FROM db ORDER BY col1
         #SELECT col1 FROM db WHERE idx='idx_2'
         con.commit()
@@ -44,7 +44,7 @@ def paste():
     if request.method == 'GET':
         res = cursor.execute("SELECT data FROM paste")
         test = res.fetchall()
-        return render_template("paste.html")
+    return render_template("index.html")
 
 '''
 flask routing takes the following format

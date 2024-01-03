@@ -104,3 +104,19 @@ nav {
   aspect-ratio: 2;
   align-self: flex-end;
 }
+
+.grid{
+  display: grid;
+  grid-template-row: 2fr 1fr 5fr;
+  gap: 1rem;
+
+}
+
+#title{
+  grid-row-start:1;
+}
+
+
+#paste{
+  grid-row-start: 3;
+}

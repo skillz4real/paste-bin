@@ -1,32 +1,12 @@
-{% extends "base.html" %}
-  
-
-  {% block nav %}
-    <button class="mobile-nav-toggle" aria-controls="primary-nav" aria-expanded="false">
-      <span>
-      </span>
-    </button>
-    <nav class="flex primary-header">
-      <a href="/">
-        <span>
-          <img src="{{url_for('static', filename='assets/logo.png')}}" class="logo">
-        </span>
-      </a>
-      <ul class="primary-nav flex" data-visible="false">
-        <li><a href="/"><span>Home</span></a></li>
-        <li><a><span>Paste</span></a></li>
-        <li><a><span>About</span></a></li>
-        <li id="contact"><a><span>Contact</span></a></li>
-      </ul>
-    </nav>
-  {% endblock %} 
-  
+{% extends "base.html" %} 
 
   {% block content %}
-    <form action="/paste" class="paste flex" method="POST">
-      <textarea rows="10" cols="100" placeholder="Insert text here..." class="textarea" name="paste">
-        
-      </textarea>
+    <form action="/paste" class="paste grid" method="POST">
+      <span id="title"> <label for="paste-title"> Title </label> <input type="text" class = "textarea" name="paste-title" placeholder="Title..."> </span>
+      <!-- might add a random name generator -->
+      </br>
+
+      <textarea rows="10" cols="100" placeholder="Insert text here..." class="textarea" name="paste" id = "paste"></textarea>
       <input type="submit" value="Paste" class="submit">
     </form>
   {% endblock %}
