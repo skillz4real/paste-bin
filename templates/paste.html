@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+  {% block content %}
+  <table id="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    {% for paste in pastes %}
+    <tbody>
+      <tr> 
+        <td>{{ pastes  }}</td>
+        <td>{{ pastes }}</td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  {% endblock %}
