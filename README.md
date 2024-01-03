@@ -1,6 +1,6 @@
 # Personal Paste bin
 
-# Do you actually trust all those paste-bin websites? Knowing very well they are either used by threat actors to scrap sensitive information on their future targets or by law enforcement to spy on normal people? 
+## Do you actually trust all those paste-bin websites? Knowing very well they are either used by threat actors to scrap sensitive information on their future targets or by law enforcement to spy on normal people? 
 
 <p align="center">
   <img src="mascot.png" alt="Mascot">
