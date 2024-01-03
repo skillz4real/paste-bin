@@ -3,7 +3,7 @@
 ## Do you actually trust all those paste-bin websites? Knowing very well they are either used by threat actors to scrap sensitive information on their future targets or by law enforcement to spy on normal people? 
 
 <p align="center">
-  <img src="mascot.png" alt="Mascot">
+  <img src="mascot.png" alt="Mascot" height="750px">
 </p>
 
  ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Python Version](https://img.shields.io/badge/python-3.x-blue.svg) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
