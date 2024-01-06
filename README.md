@@ -17,8 +17,6 @@
 
 paste-bin is meant to be a personal deployable paste bin to be used on your local network, facing the internet or behind a router/firewall with a proxy or VPN
 
-**Disclaimer:** *This project is for educational and ethical purposes only. The author is not responsible for any misuse or damage caused by this program.*
-
 ---
 
 ## ⚙️ Installation
