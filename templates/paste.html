@@ -6,17 +6,17 @@
       <tr>
         <th>Title</th>
         <th>Data</th>
+        <th>Link</th>
       </tr>
     </thead>
-    {% for paste in pastes %}
     <tbody>
+    {% for paste in pastes %}
       <tr> 
-        <td>{{ pastes  }}</td>
-        <td>{{ pastes }}</td>
+        <td>{{paste.get('title')}}</td>
+        <td>{{paste.get('data')}}</td>
+        <td><a href="/paste/{{paste.get('id')}}" target="_blank">link</a></td>
       </tr>
-      <tr>
-        <td></td>
-      </tr>
+    {% endfor %}
     </tbody>
   </table>
   {% endblock %}
