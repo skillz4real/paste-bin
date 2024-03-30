@@ -25,7 +25,11 @@ Install paste-bin easily by cloning the repository:
 
 ```bash
 git clone https://github.com/skillz4real/paste-bin
-cd hacking-tools
+cd paste-bin
+python3 -m venv .
+source bin/active
+pip3 install -r requirements.txt
+python3 app.py
 ```
 ---
 
