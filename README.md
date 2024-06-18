@@ -1,6 +1,6 @@
 # Personal Paste bin
 
-## Do you actually trust all those paste-bin websites? Knowing very well they are either used by threat actors to scrap sensitive information on their future targets or by law enforcement to spy on normal people? 
+## Don't trust public paste bins 
 
 <p align="center">
   <img src="mascot.gif" alt="Mascot">
@@ -25,7 +25,11 @@ Install paste-bin easily by cloning the repository:
 
 ```bash
 git clone https://github.com/skillz4real/paste-bin
-cd hacking-tools
+cd paste-bin
+python3 -m venv .
+source bin/active
+pip3 install -r requirements.txt
+python3 app.py
 ```
 ---
 
