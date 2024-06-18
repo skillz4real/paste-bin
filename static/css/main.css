@@ -1,9 +1,18 @@
+:root{
+  --black: #09100f;
+  --white: #606a69;
+  --highlights: #485655;
+  --bg: #444c54;
+}
+
 *{
-  color: black;
+  color: var(--white);
   padding: 0;
   margin: 0;
   display: inline-block;
   font-family: Verdana;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 body{
@@ -14,9 +23,7 @@ body{
   justify-items: center;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 2rem;
-  background: url("./../assets/wallpaperflare.com_wallpaper.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: var(--black);
   position: fixed;
   overflow-y: scroll;
 }
@@ -25,12 +32,24 @@ body{
   display: none;
 }
 
-
-.logo{
-  width: 50px;
-  margin: 2rem
+.logo-container{
+  width: 30vw;
+  padding: 0rem;
+  align-items: center;
+  justify-content: center;
 }
 
+.logo{
+  scale: 0.42;
+  transition: scale 100ms ease-in-out;
+  filter: grayscale(100%);
+}
+
+.logo:hover{
+  scale: 0.45;
+}
+
+/* the way we defined the gap allow us to set a default value of 1 rem and overwrite it everytime we need to */
 .flex {
   display: flex;
   gap: var(--gap, 1rem);
@@ -38,7 +57,6 @@ body{
 
 .primary-header {
   align-items: center;
-  border-bottom: 1px solid white;
   justify-content: space-between;
   width: 100vw;
   position: fixed;
@@ -54,11 +72,11 @@ body{
   }
 }
 
+/*the gap defined here overrides the one defined in flex*/
 .primary-nav {
   --gap: 3rem;
   list-style: none;
   padding: 0rem;
-  margin-right: 5rem;
   width: 30vw;
   align-items: center;
   justify-content: center;
@@ -70,19 +88,32 @@ body{
 
 @supports(backdrop-filter: blur(1rem)){
   .primary-header{
-    background: hsl(351.43 4.05% 33.92%/0.75);
-    backdrop-filter: blur(0.5rem);
+    background: var(--bg);
+    backdrop-filter: blur(0.8rem);
   }
 }
 
 
 .primary-header a{
   text-decoration:none;
-  color: white;
+  color: var(--white);
+  font-size: 1 rem;
+  transition: font-size 100ms ease-in-out;
 }
 
+.primary-header span{
+  width: 3rem
+}
+
+
+.primary-header a:hover{
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+
 .mobile-nav-toggle {
-  background-color: grey;
+  background-color: var(--bg);
   display: none;
 }
 
@@ -91,7 +122,7 @@ body{
 }
 
 .textarea{
-  background-color: transparent;
+  background-color: var(--bg);
   max-height: 500px;
   background: hsl(0 0% 100%/0.75);
 }
@@ -130,7 +161,7 @@ body{
 th, td {
   padding: 8px;
   text-align: left;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--black);
   display:inline-block;
 }
 

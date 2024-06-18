@@ -8,21 +8,16 @@
     <script src="{{url_for('static', filename='js/index.js')}}" defer></script>
   </head>
   <body>
-    <button class="mobile-nav-toggle" aria-controls="primary-nav" aria-expanded="false">
-      <span>
-      </span>
-    </button>
     <nav class="flex primary-header">
-      <a href="/">
-        <span>
-          <img src="{{url_for('static', filename='assets/logo.png')}}" class="logo">
-        </span>
-      </a>
+      <div class="logo-container flex">
+        <a href="/">
+          <img src="{{url_for('static', filename='assets/banner.png')}}" class="logo">
+        </a>
+      </div>
       <ul class="primary-nav flex" data-visible="false">
         <li><a href="/"><span>Home</span></a></li>
-        <li><a><span>Paste</span></a></li>
-        <li><a><span>About</span></a></li>
-        <li id="contact"><a><span>Contact</span></a></li>
+        <li><a href="/paste"><span>Paste</span></a></li>
+        <li><a href="https://github.com/skillz4real" target="_blank"><span>About</span></a></li>
       </ul>
     </nav>
     <!-- can add jinja syntaxe for control flow and add if user logged in then display account info else display login buttons -->
