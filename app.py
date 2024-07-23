@@ -5,18 +5,6 @@ from flask import Flask, render_template, request
 
 import rpg
 
-con = sqlite3.connect("paste.db")
-
-cursor = con.cursor()
-
-cursor.execute(
-    "CREATE TABLE IF NOT EXISTS paste(id TEXT PRIMARY KEY, title TEXT, date DATE, data TEXT);"
-)
-
-con.commit()
-
-con.close()
-
 app = Flask(__name__)
 
 
@@ -65,7 +53,6 @@ def paste():
     for value in values:
         l.append(tuple_to_dict(value))
     con.close()
-    print(l)
     return render_template("paste.html", pastes=l)
 
 
@@ -90,10 +77,50 @@ def retreive_paste(paste_id):
         values = res.fetchall()
     except:
         return "No Results"
-    print(values)
     (data,) = values[-1]
     return str(data)
 
+@app.route('/dropbox', methods=["GET","POST"])
+def dropbox():
+    if request.method == 'POST':
+        id = rpg.Gen((False, False, 6)) #find a way to make sure that there is no collision 
+        con = sqlite3.connect('files.db')
+        cursor = con.cursor()
+        #value = request.form['filename']
+        #title = request.form["paste-title"]
+        date = str(datetime.now()).split(".")[0]
+        res = cursor.execute(f"SELECT id FROM paste;")
+        cursor.execute(f"INSERT INTO paste VALUES (?, ?, ?,?);",(id, title, date, value))
+        #SELECT col1,col2... FROM db ORDER BY col1
+        #SELECT col1 FROM db WHERE id='id_2'
+        con.commit()
+        con.close()
 
-if __name__ == "__main__":
+    
+    con = sqlite3.connect('paste.db')
+    cursor = con.cursor()
+    res = cursor.execute("SELECT id, title, data FROM paste")
+    values = res.fetchall()
+    l = []
+    for value in values:
+        l.append(tuple_to_dict(value))
+    con.close()
+    return render_template("dropbox.html", files=f)
+    
+
+
+if __name__=="__main__":
+    con = sqlite3.connect("paste.db")
+    cursor = con.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS paste(id TEXT PRIMARY KEY, title TEXT, date DATE, data TEXT);")
+    con.commit()
+    con.close()
+
+    con = sqlite3.connect("files.db")
+    cursor = con.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS files(id TEXT PRIMARY KEY, title TEXT, date DATE, hash TEXT, path TEXT);")
+    con.commit()
+    con.close()
+
     app.run(debug=True, host="0.0.0.0", port=9991)
+
