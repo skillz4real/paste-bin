@@ -5,6 +5,11 @@
   --object: #e5e2d8; 
 }
 
+@font-face {
+  font-family: This Cafe;
+  src: url(../assets/This\ Cafe.woff2) format('woff2');
+}
+
 input[type="file"] {
   display: none;
 }
@@ -51,13 +56,13 @@ body{
 }
 
 .logo{
-  scale: 0.42;
-  transition: scale 100ms ease-in-out;
-  filter: grayscale(100%);
+  transition: scale 0.2 ease-in-out;
+  font-family: This Cafe;
+
 }
 
 .logo:hover{
-  scale: 0.45;
+  scale: 1.01;
 }
 
 /* the way we defined the gap allow us to set a default value of 1 rem and overwrite it everytime we need to */
@@ -171,7 +176,7 @@ body{
   background: var(--object);
   border: 0.1em solid white;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.5s;
   grid-column-start: 2;
   grid-row-start: 4;
   right: 70px;
@@ -182,7 +187,15 @@ body{
   background: var(--bg);
   border: 0.1em solid var(--highlights);
   scale: 1.01;
+  box-shadow: 2px 2px 5px black;
 }
+
+.submit:active{
+  scale: 1;
+  box-shadow: 0px 0px 0px black;
+}
+
+
 
 .grid{
   display: grid;
