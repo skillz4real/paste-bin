@@ -2,13 +2,6 @@
 
   {% block content %}
 
-    <form action="/dropbox" class= "paste grid" method="POST">
-      <label for="file-upload" class="custom-file-upload">
-        Upload a file...
-      </label>
-      <input id="file-upload" type="file" />
-    </form>
-
     <form action="/paste" class="paste grid" method="POST">
       <span id="title"> 
                 <label for="paste-title"> Title </label> <input type="text" class = "textarea" name="paste-title" placeholder="Title..."> </span>
