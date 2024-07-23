@@ -1,8 +1,8 @@
 :root{
-  --bg: #395e77;
-  --font1: #cc7a3d;
-  --highlights: #cc7a3d;
-  --object: #924144;
+  --bg: #bdb490;
+  --font1: #202022;
+  --highlights: #c8512a;
+  --object: #e5e2d8; 
 }
 
 input[type="file"] {
@@ -119,7 +119,7 @@ body{
 
 
 .primary-header a:hover{
-  font-size: 1.1rem;
+  font-size: 1.01rem;
   cursor: pointer;
 }
 
@@ -134,26 +134,59 @@ body{
 }
 
 .textarea{
-  background-color: var(--bg);
+  resize: none;
   max-height: 500px;
-  background: hsl(0 0% 100%/0.75);
+  background-color: var(--object);
+  color: var(--font1);
+  padding: 1em;
+  border-radius: 10px;
+  border: 2px solid white;
+  outline: none;
+  font-family: 'Fira Code';
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.textarea:hover {
+  cursor: pointer;
+  background-color: var(--bg); 
+  scale: 1.01;
+  box-shadow: 2px 2px 5px black;
+}
+
+.textarea:focus {
+  cursor: text;
+  color: var(--font1);
+  border-color: var(--highlights);
 }
 
 .submit{
-  border: 0;
   position: relative;
   display: block;
   z-index: 3;
-  width: 3rem;
+  width: 3.5rem;
   aspect-ratio: 2;
-  align-self: flex-end;
+  background: var(--object);
+  border: 0.1em solid white;
+  cursor: pointer;
+  transition: all 0.2s;
+  grid-column-start: 2;
+  grid-row-start: 4;
+  right: 70px;
+  border-radius: 10px;
+}
+
+.submit:hover{
+  background: var(--bg);
+  border: 0.1em solid var(--highlights);
+  scale: 1.01;
 }
 
 .grid{
   display: grid;
-  grid-template-row: 2fr 1fr 5fr;
   gap: 1rem;
-
 }
 
 #title{
