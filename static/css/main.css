@@ -103,6 +103,9 @@ body{
   height: 100%;
 }
 
+.primary-nav>li {
+  width: 100%;
+}
 @supports(backdrop-filter: blur(1rem)){
   .primary-header{
     background: var(--bg);
